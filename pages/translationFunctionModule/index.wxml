@@ -1,0 +1,90 @@
+<!--pages/translationFunctionModule/index.wxml-->
+<view class="container">
+  <!-- 输入区域 -->
+  <view class="input-section">
+  <van-cell-group>
+    <van-field
+    value="{{ projectName }}"
+    clearable
+    label="项目名称"
+    placeholder="请输入项目名称"
+    bind:change="onProjectNameInput"
+    bind:click-icon="onClickIcon"
+  />
+  </van-cell-group>
+  <van-button type="info" size="small" bind:click="addModule">添加模块</van-button>
+  <van-cell-group>
+    <van-field
+    wx:for="{{modules}}" wx:key="index"
+    value="{{item}}"
+    label="功能模块"
+    data-index="{{index}}" 
+    placeholder="请输入模块名称"
+    border="{{ false }}"
+    bind:change="onModuleInput"
+    icon="close"
+    bind:click-icon="deleteModule"
+  />
+  
+   <van-field
+   bindtap="showPopup"
+    label="字体"
+    placeholder="选择字体"
+    value="{{fontFamily}}"
+    readonly
+  />
+
+  <van-cell title="字体" is-link value="选择" />
+  <van-cell title="字号" is-link value="选择" />
+</van-cell-group>
+
+<van-popup show="{{ show }}" bind:close="onClose"  position="bottom"
+  custom-style="height: 40%">
+    <van-picker title="选择字体" show-toolbar columns="{{ fontFamilies }}"  bind:cancel="onClose"
+  bind:confirm="onFontFamilyChange"/>
+</van-popup>
+
+    <!-- 字体选择 -->
+    <view class="input-item">
+      <text>字体：</text>
+      <picker mode="selector" range="{{fontFamilies}}" bindchange="onFontFamilyChange">
+        <view class="picker">
+          {{fontFamily}}
+        </view>
+      </picker>
+    </view>
+    
+    <!-- 字体字号选择 -->
+    <view class="input-item">
+      <text>字体大小：</text>
+      <picker mode="selector" range="{{fontSizes}}" bindchange="onFontSizeChange">
+        <view class="picker">
+          {{fontSize}} px
+        </view>
+      </picker>
+    </view>
+    
+    <!-- 线条宽度选择 -->
+    <view class="input-item">
+      <text>线条宽度：</text>
+      <picker mode="selector" range="{{lineWidths}}" bindchange="onLineWidthChange">
+        <view class="picker">
+          {{lineWidth}} px
+        </view>
+      </picker>
+    </view>
+  </view>
+  
+  <!-- 添加导出按钮 -->
+  <view class="button-group">
+    <button bindtap="generateChart" type="primary">生成功能模块图</button>
+    <button bindtap="exportImage" type="default">导出图片</button>
+  </view>
+  
+  <!-- 横向滑动区域 -->
+  <scroll-view scroll-x class="scroll-view">
+    <view style="width: 100%;height: 100%;display: inline-block">
+      <canvas type="2d" id="moduleChart" class="chart-canvas"></canvas>
+    </view>
+  </scroll-view>
+</view>
