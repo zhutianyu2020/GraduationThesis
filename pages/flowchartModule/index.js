@@ -1,4 +1,4 @@
-// pages/translationFunctionModule/index.js
+// pages/flowchartModule/index.js
 Page({
 
   /**

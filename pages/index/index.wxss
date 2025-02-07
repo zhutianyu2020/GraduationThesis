@@ -1,62 +1,48 @@
-/**index.wxss**/
-page {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-.scrollarea {
-  flex: 1;
-  overflow-y: hidden;
-}
-
-.userinfo {
+.container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #aaa;
-  width: 80%;
+  padding: 20px;
+  background-color: #f3f4f6;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
-}
-
-.usermotto {
-  margin-top: 200px;
-}
-
-.avatar-wrapper {
-  padding: 0;
-  width: 56px !important;
-  border-radius: 8px;
-  margin-top: 40px;
-  margin-bottom: 40px;
-}
-
-.avatar {
-  display: block;
-  width: 56px;
-  height: 56px;
-}
-
-.nickname-wrapper {
+.row {
   display: flex;
+  justify-content: space-between;
   width: 100%;
-  padding: 16px;
-  box-sizing: border-box;
-  border-top: .5px solid rgba(0, 0, 0, 0.1);
-  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
-  color: black;
+  margin-bottom: 20px;
 }
 
-.nickname-label {
-  width: 105px;
+.module {
+  width: 45%;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 18px;
+  color: #fff;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.nickname-input {
-  flex: 1;
+.module:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.module-1 {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+
+.module-2 {
+  background: linear-gradient(135deg, #ff6a00, #ee0979);
+}
+
+.module-3 {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+}
+
+.module-4 {
+  background: linear-gradient(135deg, #f7971e, #ffd200);
 }

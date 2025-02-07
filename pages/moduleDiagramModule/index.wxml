@@ -1,0 +1,81 @@
+<!--pages/translationFunctionModule/index.wxml-->
+<view class="container">
+  <!-- 输入区域 -->
+  <view class="input-section">
+  <van-cell-group>
+    <van-field
+    value="{{ projectName }}"
+    clearable
+    label="项目名称"
+    placeholder="请输入项目名称"
+    bind:change="onProjectNameInput"
+    bind:click-icon="onClickIcon"
+  />
+  </van-cell-group>
+  <van-button type="info" size="small" bind:click="addModule">添加模块</van-button>
+  <van-cell-group>
+    <van-field
+    wx:for="{{modules}}" wx:key="index"
+    value="{{item}}"
+    label="功能模块"
+    data-index="{{index}}" 
+    placeholder="请输入模块名称"
+    border="{{ false }}"
+    bind:change="onModuleInput"
+    icon="close"
+    bind:click-icon="deleteModule"
+  />
+  
+   <van-field
+   bindtap="showPopup"
+    label="字体"
+    placeholder="选择字体"
+    value="{{fontFamily}}"
+    readonly
+  />
+  <van-field
+   bindtap="showFontSizePopup"
+    label="字号"
+    placeholder="选择字体"
+    value="{{fontSize}}px"
+    readonly
+  />
+  <van-field
+   bindtap="showLineWidthPopup"
+    label="线条宽度"
+    placeholder="选择线条宽度"
+    value="{{lineWidth}}px"
+    readonly
+  />
+</van-cell-group>
+
+<van-popup show="{{ showFontFamily }}" bind:close="onClose"  position="bottom"
+  custom-style="height: 30%">
+    <van-picker title="选择字体" show-toolbar columns="{{ fontFamilies }}"  bind:cancel="onClose"
+  bind:confirm="onFontFamilyChange"/>
+</van-popup>
+<van-popup show="{{ showFontSize }}" bind:close="onClose"  position="bottom"
+  custom-style="height: 30%">
+    <van-picker title="选择字号" show-toolbar columns="{{ fontSizes }}"  bind:cancel="onClose"
+  bind:confirm="onFontSizeChange"/>
+</van-popup>
+<van-popup show="{{ showLineWidth }}" bind:close="onClose"  position="bottom"
+  custom-style="height: 30%">
+    <van-picker title="选择线条宽度" show-toolbar columns="{{ lineWidths }}"  bind:cancel="onClose"
+  bind:confirm="onLineWidthChange"/>
+</van-popup>
+  </view>
+  
+  <!-- 添加导出按钮 -->
+  <view class="button-group">
+    <van-button bind:click="generateChart" type="primary">开始生成</van-button>
+    <van-button bind:click="exportImage" type="default">导出图片</van-button>
+  </view>
+  
+  <!-- 横向滑动区域 -->
+  <scroll-view scroll-x class="scroll-view">
+    <view style="width: 100%;height: 100%;display: inline-block">
+      <canvas type="2d" id="moduleChart" class="chart-canvas"></canvas>
+    </view>
+  </scroll-view>
+</view>

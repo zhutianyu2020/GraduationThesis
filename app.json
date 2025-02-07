@@ -2,7 +2,10 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/translationFunctionModule/index"
+    "pages/moduleDiagramModule/index",
+    "pages/translationFunctionModule/index",
+    "pages/flowchartModule/index",
+    "pages/useCaseDiagramModule/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",

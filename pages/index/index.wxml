@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="row">
+    <view class="module module-1" bindtap="navigateToTranslation">文献翻译</view>
+    <view class="module module-2" bindtap="navigateToModuleDiagram">模块图生成</view>
+  </view>
+  <view class="row">
+    <view class="module module-3" bindtap="navigateToFlowchart">流程图生成</view>
+    <view class="module module-4" bindtap="navigateToUseCaseDiagram">用例图生成</view>
+  </view>
+</view>
