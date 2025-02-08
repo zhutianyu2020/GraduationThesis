@@ -1,2 +1,52 @@
 <!--pages/translationFunctionModule/index.wxml-->
-<text>pages/translationFunctionModule/index.wxml</text>
+<view class="translation-container">
+  <!-- 输入区域 -->
+  <view class="input-section">
+    <textarea 
+      class="input-text" 
+      placeholder="请输入要翻译的文字" 
+      bindinput="handleInput"
+      value="{{inputText}}"
+      maxlength="{{maxLength}}"
+    ></textarea>
+    <view class="word-count">{{currentLength}}/{{maxLength}}</view>
+  </view>
+
+  <!-- 语言选择区域 -->
+  <view class="language-selection">
+    <view class="language-buttons">
+      <button 
+        class="lang-btn {{sourceLang === 'zh' ? 'active' : ''}}" 
+        bindtap="selectSourceLang" 
+        data-lang="zh"
+      >中文</button>
+      <button 
+        class="lang-btn {{sourceLang === 'en' ? 'active' : ''}}" 
+        bindtap="selectSourceLang" 
+        data-lang="en"
+      >英文</button>
+    </view>
+    <view class="arrow">→</view>
+    <view class="language-buttons">
+      <button 
+        class="lang-btn {{targetLang === 'en' ? 'active' : ''}}" 
+        bindtap="selectTargetLang" 
+        data-lang="en"
+      >英文</button>
+      <button 
+        class="lang-btn {{targetLang === 'zh' ? 'active' : ''}}" 
+        bindtap="selectTargetLang" 
+        data-lang="zh"
+      >中文</button>
+    </view>
+  </view>
+
+  <!-- 翻译按钮 -->
+  <button class="translate-btn" bindtap="translate">翻译</button>
+
+  <!-- 翻译结果区域 -->
+  <view class="result-section" wx:if="{{translatedText}}">
+    <text class="result-title">翻译结果：</text>
+    <view class="result-text">{{translatedText}}</view>
+  </view>
+</view>
